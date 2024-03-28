@@ -16,7 +16,7 @@ const CartItem = ({ product }) => {
           </div>
         </div>
         <a href="/" className="cart-item-remove">
-          X
+          x
         </a>
       </div>
     </li>

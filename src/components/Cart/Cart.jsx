@@ -18,7 +18,7 @@ const Cart = ({ onClose }) => {
         <div className="cart-head">
           <h2>Sepetim</h2>
           <a href="/" className="cart-close" onClick={onClose}>
-            X
+            x
           </a>
         </div>
         {cartItems}

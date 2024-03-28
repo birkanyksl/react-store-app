@@ -7,7 +7,7 @@ const HeaderCartButton = ({ onShowCart }) => {
       <span className="icon">
         <CartIcon />
       </span>
-      <span>Sepetim</span>
+      <span className="headerbutton-text">Sepetim</span>
       <span className="badge">0</span>
     </button>
   );
