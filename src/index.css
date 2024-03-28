@@ -10,4 +10,5 @@ html {
 
 body {
   margin: 0;
+  background: radial-gradient(circle, #a8f1cfcc, #ffffff);
 }
