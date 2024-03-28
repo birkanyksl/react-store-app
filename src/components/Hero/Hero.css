@@ -40,8 +40,11 @@
   padding: 1rem 2rem;
   border-radius: 50rem;
   transition: 0.4s ease opacity;
+  border: 5px ridge rgb(0, 0, 0);
 }
 
 .hero-container a:hover {
-  opacity: 0.8;
+  background-color: #fffefe;
+  color: #000000;
+  border: 5px ridge rgb(0, 0, 0);
 }

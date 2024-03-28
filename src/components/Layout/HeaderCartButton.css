@@ -1,8 +1,8 @@
 .button {
   cursor: pointer;
   font: inherit;
-  border: none;
-  background-color: #098115;
+  border: 5px ridge rgb(0, 0, 0);
+  background-color: #000000; /* Ana Renk */
   color: #fff;
   padding: 0.1rem 2rem;
   margin: 14px;
@@ -13,9 +13,9 @@
   font-weight: bold;
 }
 
-.button:hover,
-.button:active {
-  background-color: #000;
+button:hover {
+  background-color: #f2f9f3; /* Arka Plan Rengi */
+  color: black;
 }
 
 .icon {
@@ -25,14 +25,16 @@
 }
 
 .badge {
-  background-color: #000;
+  background-color: #fcf9f1; /* Vurgu Rengi */
   padding: 0.25rem 1rem;
   border-radius: 25px;
   margin-left: 1rem;
   font-weight: bold;
+  color: #000000;
 }
 
 .button:hover .badge,
 .button:active .badge {
-  background-color: #098115;
+  background-color: #000000;
+  color: #fff;
 }
