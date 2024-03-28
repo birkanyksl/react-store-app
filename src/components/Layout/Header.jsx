@@ -1,11 +1,12 @@
+/* eslint-disable react/prop-types */
 import "./Header.css";
 import HeaderCartButton from "./HeaderCartButton";
 
-const Header = () => {
+const Header = ({ onShowCart }) => {
   return (
     <header className="header">
       <h1>React Alışveriş Sitesi</h1>
-      <HeaderCartButton />
+      <HeaderCartButton onShowCart={onShowCart} />
     </header>
   );
 };
