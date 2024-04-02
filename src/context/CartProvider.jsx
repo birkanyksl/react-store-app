@@ -12,12 +12,51 @@ const defaultCartState = {
 const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD":
+      const existingCartItemIndex = state.items.findIndex(
+        (item) => item.id == action.item.id
+      );
+
       let updatedItems = [...state.items];
-      updatedItems = [...state.items, action.item];
+      if (existingCartItemIndex !== -1) {
+        updatedItems[existingCartItemIndex] = {
+          ...state.items[existingCartItemIndex],
+          amount:
+            state.items[existingCartItemIndex].amount + action.item.amount,
+        };
+      } else {
+        updatedItems = [...state.items, action.item];
+      }
+
       return {
         items: updatedItems,
         totalAmount: state.totalAmount + action.item.price * action.item.amount,
       };
+
+    // case "ADD":
+    //   const existingCartItem = state.items.find(
+    //     (item) => item.id === action.item.id
+    //   );
+
+    //   let updatedItemsAdd;
+    //   if (existingCartItem) {
+    //     updatedItemsAdd = state.items.map((item) => {
+    //       if (item.id === action.item.id) {
+    //         return {
+    //           ...item,
+    //           amount: item.amount + action.item.amount,
+    //         };
+    //       }
+    //       return item;
+    //     });
+    //   } else {
+    //     updatedItemsAdd = [...state.items, action.item];
+    //   }
+
+    //   return {
+    //     items: updatedItemsAdd,
+    //     totalAmount: state.totalAmount + action.item.price * action.item.amount,
+    //   };
+
     case "REMOVE":
       return state;
     case "CLEAR":
