@@ -1,13 +1,17 @@
 /* eslint-disable react/prop-types */
 import "./Cart.css";
 import CartItem from "./CartItem";
-import products from "../../productData";
+//import products from "../../productData";
 import Offcanvas from "../UI/Offcanvas";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartProvider";
 
 const Cart = ({ onClose }) => {
+  const { items, totalAmount } = useContext(CartContext);
+
   const cartItems = (
     <ul className="cart-items">
-      {products.map((product) => (
+      {items.map((product) => (
         <CartItem key={product.id} product={product} />
       ))}
     </ul>
@@ -24,7 +28,7 @@ const Cart = ({ onClose }) => {
       {cartItems}
       <div className="total">
         <span>Toplam Değer</span>
-        <span>10₺</span>
+        <span>{totalAmount.toFixed(2)}₺</span>
       </div>
       <div className="actions">
         <button className="cart-order">Sipariş Ver</button>
