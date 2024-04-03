@@ -8,7 +8,7 @@ const CartItem = ({ product }) => {
   return (
     <li className="cart-item">
       <div className="cart-item-img">
-        <img src={product.image} alt={product.name} />
+        <img src={product.img} alt={product.name} />
       </div>
       <div className="cart-item-info">
         <div className="cart-item-texts">

@@ -6,12 +6,12 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartProvider";
 
 const ProductItem = ({ product }) => {
-  const { name, description, image, price } = product;
+  const { name, description, img, price } = product;
   const { addItem } = useContext(CartContext);
 
   return (
     <Card>
-      <img src={image} alt="" />
+      <img src={img} alt="" />
       <h3 className="product-title">{name}</h3>
       <p>{description}</p>
       <div className="product-info">
