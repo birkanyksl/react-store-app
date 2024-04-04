@@ -1,22 +1,22 @@
 import "./Products.css";
 //import products from "../../productData";
 import ProductItem from "./ProductItem";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, SetError] = useState(null);
 
-  const productList = products.map((product) => (
-    <ProductItem key={product.id} product={product} />
-  ));
-
   function LoadingSpinner() {
     return <div className="spinner"></div>;
   }
 
-  const fetchProductsHandler = async () => {
+  const productList = products.map((product) => (
+    <ProductItem key={product.id} product={product} />
+  ));
+
+  const fetchProductsHandler = useCallback(async () => {
     setIsLoading(true);
     SetError(null);
     try {
@@ -41,7 +41,11 @@ const Products = () => {
       SetError(error.message);
     }
     setIsLoading(false);
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchProductsHandler();
+  }, [fetchProductsHandler]);
 
   let content = <p>Found no products!</p>;
 
@@ -58,10 +62,6 @@ const Products = () => {
   return (
     <main className="products-wrapper">
       <ul className="products">{content}</ul>
-
-      <button className="button" onClick={fetchProductsHandler}>
-        Fetch Products
-      </button>
     </main>
   );
 };
