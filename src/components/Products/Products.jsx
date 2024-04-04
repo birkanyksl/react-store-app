@@ -21,7 +21,7 @@ const Products = () => {
     SetError(null);
     try {
       const response = await fetch(
-        "https://my-pos-application-api.onrender.com/api/products/get-all"
+        "https://api-product-2bfd.onrender.com/myproducts"
       );
       if (response.status !== 200) {
         throw new Error("Something went wrong!");
