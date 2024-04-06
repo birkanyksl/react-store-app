@@ -7,6 +7,8 @@ import CartProvider from "./context/CartProvider";
 
 function App() {
   const [cartIsShow, setCartIsShow] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   const showCartHandler = () => {
     setCartIsShow(true);
@@ -17,12 +19,24 @@ function App() {
     setCartIsShow(false);
   };
 
+  const handleSearch = (searchTerm) => {
+    const filtered = products.filter((product) =>
+      product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredProducts(filtered);
+  };
+
   return (
     <CartProvider>
       {cartIsShow && <Cart onClose={hideCartHandler} />}
-      <Header onShowCart={showCartHandler} />
+      <Header onShowCart={showCartHandler} onSearch={handleSearch} />
       <Hero />
-      <Products />
+      <Products
+        products={products}
+        setProducts={setProducts}
+        filteredProducts={filteredProducts}
+        setFilteredProducts={setFilteredProducts}
+      />
     </CartProvider>
   );
 }

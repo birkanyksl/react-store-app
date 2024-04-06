@@ -1,11 +1,11 @@
+/* eslint-disable react/prop-types */
 import "./Products.css";
 //import products from "../../productData";
 import ProductItem from "./ProductItem";
 import { useCallback, useEffect, useState } from "react";
 import SearchBar from "../Layout/SearchBar";
-const Products = () => {
-  const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+
+const Products = ({ setProducts, filteredProducts, setFilteredProducts }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, SetError] = useState(null);
 
@@ -49,13 +49,6 @@ const Products = () => {
     fetchProductsHandler();
   }, [fetchProductsHandler]);
 
-  const handleSearch = (searchTerm) => {
-    const filtered = products.filter((product) =>
-      product.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredProducts(filtered);
-  };
-
   let content = <p>Found no products!</p>;
 
   // if (products.length > 0) {
@@ -76,12 +69,7 @@ const Products = () => {
     );
   }
 
-  return (
-    <main className="products-wrapper">
-      <SearchBar onSearch={handleSearch} />
-      {content}
-    </main>
-  );
+  return <main className="products-wrapper">{content}</main>;
 };
 
 export default Products;
